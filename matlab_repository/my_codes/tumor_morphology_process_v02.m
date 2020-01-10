@@ -1,6 +1,6 @@
 
 
-function [bw]=tumor_morphology_process_v02(bwTumor)
+function [bw]=tumor_morphology_process_v02(bwTumor,thr)
 
 
 %1) remove small noisy regions
@@ -9,7 +9,7 @@ numPixels = cellfun(@numel,CC.PixelIdxList);
 m=max(numPixels);
 numPixels(bsxfun(@eq,numPixels,m))=-Inf;
 m2=max(numPixels);
-thrNoise=max(round(m2/3),64*64*10);                   % less than noise_ratio of the maximum region is considered as noise
+thrNoise=max(round(m2/3),thr);                   % less than noise_ratio of the maximum region is considered as noise
 bwTumor=bwareaopen(bwTumor,thrNoise);                         
 
 

@@ -1,3 +1,5 @@
+%----save selected representative patches by ap clustring--------%
+
 function imgInfo=xu_save_selected_image_patches(top_left,bottom_right,slidePtr,levelforRead,magFine,magCoarse,imgname,imgpath,freq,HE,magToUseAbove)
 
 

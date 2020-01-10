@@ -1,3 +1,5 @@
+%-------save all the patches---------%
+
 function xu_save_selected_image_patches_v01(top_left,bottom_right,slidePtr,levelforRead,magFine,magCoarse,imgname,imgpath,HE,magToUseAbove)
 
 if nargin==9

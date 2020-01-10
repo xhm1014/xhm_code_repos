@@ -3,7 +3,7 @@
 
 function [bwTissue]=wsi_preprocess_tissueforground(RGB,thrWhite,thrNoise)
 
-bb=100; %% do not consider image border pixels
+bb=10; %% do not consider image border pixels
 
 %% step 1: select interested regions
 gimg=rgb2gray(RGB);
@@ -16,7 +16,7 @@ bwTissue=bwareaopen(bwTissue,thrNoise);                         % obtain tissue 
 %--fill small holes in the image--%
 bwNoholes=imfill(bwTissue,'holes');
 holes=bwNoholes&~bwTissue;
-bigholes=bwareaopen(holes,round(thrNoise/10));    % holes greater than half of image patch not filled
+bigholes=bwareaopen(holes,round(thrNoise));    % holes greater than half of image patch not filled
 smallholes=holes&~bigholes;
 bwTissue=bwTissue|smallholes;
 %-- end filling small holes -- %
